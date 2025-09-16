@@ -1,0 +1,4 @@
+Flask
+flask-cors
+numpy==1.26 #not sure if it is needed
+pandas
