@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Overview{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <section>
+        <h2>Select a driver!</h2>
+        <form id="driverForm">
+            <select name="driver" id="driverSelect">
+                {% for driver in drivers %}
+                 <option value="{{driver.name}}">{{driver.name}}</option>
+                {% end for %}
+
+            </select>
+            
+        </form>
+
+    </section>
+</body>
