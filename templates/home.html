@@ -12,8 +12,8 @@
         <form id="driverForm">
             <select name="driver" id="driverSelect">
                 {% for driver in drivers %}
-                 <option value="{{driver.name}}">{{driver.name}}</option>
-                {% end for %}
+                 <option value="{{driver.driverId_encoded}}">{{driver.driver_fullname}}</option>
+                {% endfor %}
 
             </select>
             
