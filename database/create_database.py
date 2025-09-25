@@ -16,6 +16,7 @@ cursor.execute("""
         year INT,
         name TEXT,
         driverId INT,
+        driver_fullname TEXT,
         constructorId INT,
         grid INT,
         position INT,
@@ -46,9 +47,9 @@ cursor.execute("""
 
 conn.commit()
 
-drivers = f1_info[["forename", "surname"]].drop_duplicates()
-drivers["driver_names"] = drivers["forename"] + " " + drivers["surname"]
-drivers = drivers[["driver_name"]].reset_index(drop=True)
+drivers = f1_info[["driver_fullname"]].drop_duplicates().reset_index(drop=True)
+#drivers["driver_names"] = drivers["forename"] + " " + drivers["surname"]
+
 drivers["driverId_encoded"] = drivers.index
 
 drivers.to_sql("drivers", conn, if_exists ="append", index=False)

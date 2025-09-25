@@ -23,6 +23,11 @@ def get_drivers():
     drivers = pd.read_sql(query, connection_db)
     connection_db.close()
     return drivers.to_dict(orient = "records")
+def get_constructor():
+    connection_db = sqlite3.connect(DB_PATH)
+    query = "SELECT constructorId_encoded from constructors WHERE constructor_names" #lowkey check var name, names or name
+    constructors = pd.read_Sql(query, connection_db)
+    connection_db.close
 if __name__ == "main":
     app.run(debug=True, port=5001)
 
