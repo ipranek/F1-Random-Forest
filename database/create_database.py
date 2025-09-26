@@ -34,7 +34,7 @@ cursor.execute("""
 cursor.execute("""
     CREATE TABLE IF NOT EXISTS drivers(
                driverId_encoded INT PRIMARY KEY,
-               driver_name TEXT UNIQUE); """)
+               driver_fullname TEXT UNIQUE); """)
 cursor.execute("""
     CREATE TABLE IF NOT EXISTS constructors(
                constructorId_encoded INT PRIMARY KEY,
