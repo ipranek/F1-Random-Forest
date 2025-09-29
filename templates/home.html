@@ -20,4 +20,29 @@
         </form>
 
     </section>
+    <section>
+        <h2>Select a constructor!</h2>
+        <form id="constructorForm">
+            <select name="constructor" id="constructorSelect">
+                {% for constructor in constructors %}
+                 <option value="{{constructor.constructorId_encoded}}">{{constructor.constructor_name}}</option>
+                {% endfor %}
+
+            </select>
+            
+        </form>
+    </section>
+    <section>
+        <h2>Select a Grand Prix track!</h2>
+        <form id="trackForm">
+            <select name="track" id="trackSelect">
+                {% for track in tracks %}
+                 <option value="{{track.GP_name_encoded}}">{{track.GP_track_name}}</option>
+                {% endfor %}
+
+            </select>
+            
+        </form>
+
+    </section>
 </body>
