@@ -6,4 +6,6 @@ Using historical Formula 1 data (1950–2024), the model incorporates:
   Race information (Grand Prix names)
   Starting position (grid)
 
-I am training a Random Forest Classifier to model the probability of converting pole → podium.
+Random Forest Classifier --> to model the probability of seeing if someone who gets pole position can end up on the podium that same weekend. 
+Random Forest Regression --> to model where a person who got pole position can end up in the race rankings. 
+
