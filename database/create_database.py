@@ -35,7 +35,8 @@ cursor.execute("""
         podium INT,
         driverId_encoded INT,
         constructorId_encoded INT,
-        GP_name_encoded INT
+        GP_name_encoded INT,
+        driver_fullname TEXT
                
     );    """)
 
