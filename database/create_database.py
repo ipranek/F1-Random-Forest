@@ -3,7 +3,7 @@ import sqlite3
 import numpy as np 
 import os
 
-f1_info = pd.read_csv("/Users/ipekoner/Documents/GitHub/F1-Random-Forest/data/f1_merged_database.csv")
+f1_info = pd.read_csv("/Users/ipekoner/Documents/GitHub/F1-Random-Forest/data/f1_merged_database_new.csv", index_col = 0)
 
 conn = sqlite3.connect("f1_final_database.db")
 
@@ -19,7 +19,7 @@ print("creating new tables")
 
 cursor.execute("""
     CREATE TABLE IF NOT EXISTS f1_merged (
-        raceId INT,
+               raceId INT,
         date DATE,
         year INT,
         name TEXT,
@@ -30,13 +30,19 @@ cursor.execute("""
         position INT,
         forename TEXT,
         surname TEXT,
+        delta REAL,
         constructor_name TEXT,
-        constructor_points INT,
+        constructor_points REAL,
+        avg_position REAL,
+        constructor_points_sum REAL,
+        constructor_points_avg REAL,
+        season_avg_position REAL,
         podium INT,
+        pole INT,
         driverId_encoded INT,
         constructorId_encoded INT,
         GP_name_encoded INT,
-        driver_fullname TEXT
+        season_avg_delta REAL
                
     );    """)
 
