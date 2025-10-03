@@ -20,18 +20,44 @@
         </form>
 
     </section>
-    <section>
-        <h2>Select a constructor!</h2>
-        <form id="constructorForm">
-            <select name="constructor" id="constructorSelect">
-                {% for constructor in constructors %}
-                 <option value="{{constructor.constructorId_encoded}}">{{constructor.constructor_name}}</option>
-                {% endfor %}
 
-            </select>
+    <div class="slider">
+        <div class="item">
+          <div class="f1-label">Hamilton</div>
+          <div class="card">
+            <div class="front" style="background-image: url('static/f1-hamilton.png'); background-size: cover; background-position: center;"></div>
+            <div class="back">
+              <div class="card-info">
             
-        </form>
-    </section>
+              </div>
+            </div>
+          </div>
+        </div>
+        <section>
+            <h2>Select a constructor!</h2>
+            <form id="constructorForm">
+                <select name="constructor" id="constructorSelect">
+                    {% for constructor in constructors %}
+                     <option value="{{constructor.constructor}}">{{constructor.constructor_name}}</option>
+                    {% endfor %}
+    
+                </select>
+                
+            </form>
+    
+        </section>
+        <div class="slider">
+            <div class="item">
+              <div class="f1-label">Mercedes</div>
+              <div class="card">
+                <div class="front" style="background-image: url('static/f1-mercedes.png'); background-size: cover; background-position: center;"></div>
+                <div class="back">
+                  <div class="card-info">
+                
+                  </div>
+                </div>
+              </div>
+            </div>
     <section>
         <h2>Select a Grand Prix track!</h2>
         <form id="trackForm">
@@ -45,4 +71,16 @@
         </form>
 
     </section>
+    <div class="slider">
+        <div class="item">
+          <div class="f1-label">Italian GP</div>
+          <div class="card">
+            <div class="front" style="background-image: url('static/f1-italyGP.png'); background-size: cover; background-position: center;"></div>
+            <div class="back">
+              <div class="card-info">
+            
+              </div>
+            </div>
+          </div>
+        </div>
 </body>
