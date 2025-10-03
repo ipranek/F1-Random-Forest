@@ -19,20 +19,19 @@
             
         </form>
 
+ 
+
+        <div id="driverSlider" class ="slider">
+            {% for driver in drivers %}
+            <div class="card" data-value="{{ driver.driverId_encoded}}" onlick="selectDriverCard('{{ driver.driverId_encoded}}')">
+                <img src="{{ url('static', filename='drivers/' + driver.driver_fullname|lower|replace(' ', '_') + '.png')}}" class = "card-img"
+                    alt="{{ driver.driver_fullname}}" class="card-img">
+                <p>{{ driver.driver_fullname}}</p>
+            </div>
+                {% endfor %}
+        </div>
     </section>
 
-    <div class="slider">
-        <div class="item">
-          <div class="f1-label">Hamilton</div>
-          <div class="card">
-            <div class="front" style="background-image: url('static/f1-hamilton.png'); background-size: cover; background-position: center;"></div>
-            <div class="back">
-              <div class="card-info">
-            
-              </div>
-            </div>
-          </div>
-        </div>
         <section>
             <h2>Select a constructor!</h2>
             <form id="constructorForm">
@@ -45,19 +44,17 @@
                 
             </form>
     
-        </section>
-        <div class="slider">
-            <div class="item">
-              <div class="f1-label">Mercedes</div>
-              <div class="card">
-                <div class="front" style="background-image: url('static/f1-mercedes.png'); background-size: cover; background-position: center;"></div>
-                <div class="back">
-                  <div class="card-info">
-                
-                  </div>
+        
+            <div id="constructorSlider" class ="slider">
+                {% for constructor in constructors %}
+                <div class="card" data-value="{{ constructor.constructorId_encoded}}" onlick="selectConstructorCard('{{ constructor.constructorId_encoded}}')">
+                    <img src="{{ url('static', filename='constructor/' + constructor.constructor_name|lower|replace(' ', '_') + '.png')}}" class = "card-img"
+                        alt="{{ constructor.constructor_name}}" class="card-img">
+                    <p>{{ constructor.constructor_name}}</p>
                 </div>
-              </div>
+                    {% endfor %}
             </div>
+        </section>
     <section>
         <h2>Select a Grand Prix track!</h2>
         <form id="trackForm">
@@ -70,17 +67,15 @@
             
         </form>
 
-    </section>
-    <div class="slider">
-        <div class="item">
-          <div class="f1-label">Italian GP</div>
-          <div class="card">
-            <div class="front" style="background-image: url('static/f1-italyGP.png'); background-size: cover; background-position: center;"></div>
-            <div class="back">
-              <div class="card-info">
-            
-              </div>
+    
+        <div id="trackSlider" class ="slider">
+            {% for track in tracks %}
+            <div class="card" data-value="{{ track.GP_name_encoded}}" onlick="selectTrackCard('{{ track.GP_name_encoded}}')">
+                <img src="{{ url('static', filename='track/' + track.GP_track_name|lower|replace(' ', '_') + '.png')}}" class = "card-img"
+                    alt="{{ track.GP_track_name}}" class="card-img">
+                <p>{{ track.GP_track_name}}</p>
             </div>
-          </div>
+                {% endfor %}
         </div>
+</section>
 </body>
