@@ -7,7 +7,7 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 
-#DB_PATH =
+DB_PATH = "/Users/ipekoner/Documents/GitHub/F1-Random-Forest/database/f1_final_database.db"
 
 #model = 
 
