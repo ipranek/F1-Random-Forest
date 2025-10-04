@@ -1,0 +1,2 @@
+deploy the model and attack it to frontend
+create ai chatbot with the scope of the ml models but also +api so that it gives humöan-like answers
