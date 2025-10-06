@@ -1,8 +1,9 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 import sqlite3
 import pandas as pd
 import numpy as np
 from flask_cors import CORS
+
 
 
 app = Flask(__name__)
@@ -36,6 +37,27 @@ def get_track():
     tracks = pd.read_sql(query, connection_db)
     connection_db.close()
     return tracks.to_dict(orient = "records")
+def predict():
+    merged = request.json
+    driver_name = merged["driver_fullname"]
+    constructor_name = merged["constructor_name"]
+    track_name = merged["GP_track_name"]
+    grid_position = merged.get("grid", 1)
+
+    conn = sqlite3.connect(DB_PATH)
+
+    driver_id_encoded = pd.read_sql( "SELECT driverId_encoded FROM drivers WHERE driver_fullname = ?", conn, params=(driver_name,)).iloc[0,0]
+    constructor_id_encoded = pd.read_sql("SELECT constructorId_encoded FROM constructors WHERE constructor_name", conn, params=(constructor_name,)).iloc[0,0]
+    track_id_encoded = pd.read_sql( "SELECT GP_name_encoded FROM tracks WHERE GP_track_name = ?", conn, params=(track_name,)).iloc[0,0]
+
+    stats = pd.read_sql(
+        """
+        SELECT constructor_points_avg, constructor_points_sum, season_avg_position, season_avg_delta FROM f1_merged
+        WHERE driver_Id_encoded = ? AND constructorId_encoded = ? AND GP_name_encoded = ?
+        ORDER BY date DESC LIMIT 1
+        """, conn, params = (driver_id_encoded, constructor_id_encoded, track_id_encoded))
+    conn.close()
+    
 if __name__ == "__main__":
     app.run(debug=True, port=5001)
 
