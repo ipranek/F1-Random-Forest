@@ -9,7 +9,8 @@ app = Flask(__name__)
 
 DB_PATH = "/Users/ipekoner/Documents/GitHub/F1-Random-Forest/database/f1_final_database.db"
 
-#model = 
+rf_class_model = "/Users/ipekoner/Documents/GitHub/F1-Random-Forest/rf_podium_model.joblib"
+rf_reg_model = "/Users/ipekoner/Documents/GitHub/F1-Random-Forest/rf_position_model.joblib"
 
 @app.route("/", methods = ["GET"])
 def home():
