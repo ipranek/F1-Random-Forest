@@ -39,16 +39,12 @@ def get_track():
     return tracks.to_dict(orient = "records")
 def predict():
     merged = request.json
-    driver_name = merged["driver_fullname"]
-    constructor_name = merged["constructor_name"]
-    track_name = merged["GP_track_name"]
+    driver_id_encoded = merged["driverId_encoded"]
+    constructor_id_encoded = merged["constructorId_encoded"]
+    track_id_encoded = merged["GP_name_encoded"] #now, no need to map the actual anmes to encoded ids anymore bc in the frontend we are using the small sql tables with name and encoded id anyway
     grid_position = merged.get("grid", 1)
 
     conn = sqlite3.connect(DB_PATH)
-
-    driver_id_encoded = pd.read_sql( "SELECT driverId_encoded FROM drivers WHERE driver_fullname = ?", conn, params=(driver_name,)).iloc[0,0]
-    constructor_id_encoded = pd.read_sql("SELECT constructorId_encoded FROM constructors WHERE constructor_name", conn, params=(constructor_name,)).iloc[0,0]
-    track_id_encoded = pd.read_sql( "SELECT GP_name_encoded FROM tracks WHERE GP_track_name = ?", conn, params=(track_name,)).iloc[0,0]
 
     stats = pd.read_sql(
         """
