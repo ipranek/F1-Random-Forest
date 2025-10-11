@@ -53,10 +53,31 @@ def predict():
     stats = pd.read_sql(
         """
         SELECT constructor_points_avg, constructor_points_sum, season_avg_position, season_avg_delta FROM f1_merged
-        WHERE driver_Id_encoded = ? AND constructorId_encoded = ? AND GP_name_encoded = ?
+        WHERE driverId_encoded = ? AND constructorId_encoded = ? AND GP_name_encoded = ?
         ORDER BY date DESC LIMIT 1
         """, conn, params = (driver_id_encoded, constructor_id_encoded, track_id_encoded))
     conn.close()
+
+    stats_dict = stats.iloc[0].to_dict() #takes the dataframe stats and gets the first row of said dataframe, returns as pandas series, turns into dict
+
+    input_df = pd.DataFrame([{
+        "driverId_encoded": driver_id_encoded,
+        "constructorId_encoded": constructor_id_encoded,
+        "GP_name_encoded": track_id_encoded,
+        "constructor_points_avg": stats_dict["constructor_points_avg"],
+        "constructor_points_sum": stats_dict["constructor_points_sum"],
+        "season_avg_position": stats_dict["season_avg_position"],
+        "season_avg_delta": stats_dict["seaosn_avg_delta"],
+        "grid": grid_position
+
+    }])
+
+    predicted_position =rf_reg_model.predict(input_df)[0] #predict gives array, [0] to extract first and singular scalar value from the array
+    podium = predicted_position <= 3
+    return jsonify({ #cannot handle numpy arrays directly
+        "predicted_potision": float(predicted_position),
+        "podium": podium
+    })
     
 if __name__ == "__main__":
     app.run(debug=True, port=5001)
