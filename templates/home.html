@@ -78,4 +78,34 @@
                 {% endfor %}
         </div>
 </section>
+
+<section class = "predict-selection">
+    <button id="predictBtn" class = "neon-btn">Predict Race Outcome!</button>
+</section>
+
+<section id="resultSection" class="result hidden">
+    <h2>🏁 Prediction Results</h2>
+    <div id="predictionOutput" class ="prediction-box">
+        <p>Loading preditcion...</p>
+    </div>
+</section>
+
+<script>
+    async function sendPrediction() {
+        const driverId = document.getElementByıd("driverSelect").value;
+        const constructorId = document.getElementByıd("constructorSelect").value;
+        const GP_name = document.getElementByıd("trackSelect").value;
+
+        const response = await fetch("/predict", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                driverId_encoded: driverId,
+                constructorId_encoded: constructorId,
+                GP_name_encoded: GP_name
+            })
+        });
+    }
+</script>
+
 </body>
