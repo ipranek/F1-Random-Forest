@@ -92,9 +92,9 @@
 
 <script>
     async function sendPrediction() {
-        const driverId = document.getElementByıd("driverSelect").value;
-        const constructorId = document.getElementByıd("constructorSelect").value;
-        const GP_name = document.getElementByıd("trackSelect").value;
+        const driverId = document.getElementById("driverSelect").value;
+        const constructorId = document.getElementById("constructorSelect").value;
+        const GP_name = document.getElementById("trackSelect").value;
 
         const response = await fetch("/predict", {
             method: "POST",
