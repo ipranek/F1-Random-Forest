@@ -105,6 +105,15 @@
                 GP_name_encoded: GP_name
             })
         });
+        const result = await response.json();
+        const position = result.predicted.position.toFixed(1);
+        const podium = result.podium ? "On the podium!": "Not on Podium.";
+        const outputdiv = document.getElementById("predictionOutput");
+        outputDiv.innerHTML = '
+            <h3>Predicted Finishing Position: <span>${position}</span></h3>
+            <p class = "${result.podium ? 'podium': 'no-podium'}">${position}</p>
+            ';
+
     }
 </script>
 
