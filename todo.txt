@@ -1,2 +1,10 @@
 deploy the model and attack it to frontend
 create ai chatbot with the scope of the ml models but also +api so that it gives humöan-like answers
+
+SHAP (shapley) for model explanation to the user
+    -how did x driver get p4 in this assessment
+connection of the SQL database to langchain (gpt, llama...) for answering related questions:
+    -who are the drivers in the databse?
+    -how many times has hamilton gotten p1
+    ...
+make sure to have conversation history
