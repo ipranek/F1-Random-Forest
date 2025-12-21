@@ -2,7 +2,7 @@
 
 This project is a Random Forest machine learning interactive web application. This project predicts whether an F1 driver with a specific constructor on a specific track (determined by the user) will be able to finish on the podium, given they start with pole position. 
 
-Using historical Formula 1 data (1950–2024), the model incorporates: <br/>
+Using historical [Formula 1 data](https://www.kaggle.com/datasets/melissamonfared/formula-1/data) (1950–2024), the model incorporates: <br/>
   Driver information (skill & consistency through average positions) <br/>
   Constructor (team) performance (points & averages across seasons) <br/>
   Race information (Grand Prix names) <br/>
@@ -27,6 +27,7 @@ Random Forest Classifier --> to model the probability of seeing if someone who g
 Random Forest Regression --> to model where a person who got pole position can end up in the race rankings. Hyperparameter tuning is done using RandomizedSearchCV. The performance improvements are: MAE: 2.16 -> 2.07; R-squared: 0.63 -> 0.66. 
 
 # How to Run Locally?
-
+```
 pip install -r requirements.txt <br/>
 python app.py
+```
